@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ProTypist X - Fullscreen Typing Test</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Lexend+Deca:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<!-- Body and HTML content as previously provided -->
+<body data-theme="dracula">
+    <div class="app-wrapper">
+        <nav class="navbar">
+            <div class="logo" id="logoLinkContainer">
+                <i class="ri-keyboard-box-line logo-icon"></i>
+                <h1 id="logoLink">ProTypist X</h1>
+            </div>
+            <div class="nav-actions">
+                <select id="themeSwitcher" aria-label="Select Theme">
+                    <option value="serika-dark">Serika Dark</option>
+                    <option value="dracula">Dracula</option>
+                    <option value="oblivion">Oblivion</option>
+                    <option value="light-classic">Light Classic</option>
+                    <option value="botanical">Botanical</option>
+                    <option value="ocean-deep">Ocean Deep</option>
+                    <option value="sunset-glow">Sunset Glow</option>
+                    <option value="stealth-ops">Stealth Ops</option>
+                    <option value="cyberpunk-neon">Cyberpunk Neon</option>
+                    <option value="minty-fresh">Minty Fresh</option>
+                    <option value="coffee-shop">Coffee Shop</option>
+                    <option value="grape-soda">Grape Soda</option>
+                    <option value="mono-amber">Mono Amber</option>
+                    <option value="retro-terminal">Retro Terminal</option>
+                </select>
+            </div>
+        </nav>
+
+        <main id="mainContent">
+            <section id="typingTest" class="page-content active">
+                <div class="typing-test-area">
+                    <div class="test-config-bar">
+                        <div class="config-group">
+                            <button class="config-button" id="textTypeToggle" data-current-text-source="words" title="Switch Text Type">
+                                <i class="ri-text"></i> Words
+                            </button>
+                        </div>
+                        <span style="color: var(--sub-text-color); margin: 0 5px;">|</span>
+                        <div class="config-group" id="timeModeGroup">
+                            <button class="config-button" data-mode="time" data-value="15">15s</button>
+                            <button class="config-button active" data-mode="time" data-value="30">30s</button>
+                            <button class="config-button" data-mode="time" data-value="60">60s</button>
+                        </div>
+                        <span style="color: var(--sub-text-color); margin: 0 5px;">|</span>
+                        <div class="config-group" id="wordModeGroup">
+                            <button class="config-button" data-mode="words" data-value="10">10w</button>
+                            <button class="config-button" data-mode="words" data-value="25">25w</button>
+                            <button class="config-button" data-mode="words" data-value="50">50w</button>
+                        </div>
+                    </div>
+                    <div class="test-info-bar" id="statsDisplay"> <span id="timeLeft" title="Time Remaining / Words Typed">0</span> <span style="color:var(--sub-text-color)">|</span> <span id="wpm" title="Words Per Minute">0</span><span class="label-unit">WPM</span> <span style="color:var(--sub-text-color)">|</span> <span id="accuracy" title="Accuracy">100</span><span class="label-unit">%</span> </div>
+                    <div class="words-container" id="wordsContainer" tabindex="0"> <div id="caret"></div> </div>
+                    <input type="text" id="hidden-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" autofocus>
+                    <div class="test-controls-footer"> <button id="restartTestBtn" title="Restart Test"><i class="ri-refresh-line"></i></button> </div>
+                </div>
+                <div class="results-overlay" id="resultsOverlay"> <div class="results-box"> <h2 id="resultTitle">Test Complete!</h2> <p><span class="label">WPM:</span> <strong id="resultWPM">0</strong></p> <p><span class="label">Accuracy:</span> <strong id="resultAcc">0</strong>%</p> <p><span class="label">Raw WPM:</span> <strong id="resultRawWPM">0</strong></p> <p><span class="label">Characters:</span> <strong id="resultChars">0/0/0</strong></p> <p><span class="label">Test Mode:</span> <strong id="resultMode">Time: 30s</strong></p> <button class="restart-btn" id="resultsRestartBtn"><i class="ri-refresh-line"></i> Again</button> </div> </div>
+            </section>
+
+            <section id="statsHistory" class="page-content stats-history-page">
+                <h2>Test History & Averages</h2>
+                <div class="stats-summary">
+                    <p>Overall Avg WPM: <strong id="avgWPM">--</strong></p>
+                    <p>Overall Avg Accuracy: <strong id="avgAcc">--</strong>%</p>
+                    <p>Tests Taken: <strong id="testsTaken">0</strong></p>
+                </div>
+                <div class="graph-container">
+                    <h3>WPM Over Time (Chart Placeholder)</h3>
+                    <canvas id="wpmHistoryChart"></canvas>
+                     <p style="text-align:center; color: var(--sub-text-color); padding: 20px 0;">Chart.js or similar library needed for graph rendering.</p>
+                </div>
+                <h3 style="margin-top:30px; color: var(--text-color);">Recent Tests:</h3>
+                <ul class="stats-history-list" id="statsHistoryList">
+                    <li id="noHistoryMsg" style="background:transparent !important; box-shadow:none; border:none; text-align:center; color: var(--sub-text-color);">No test history yet.</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+             <p>ProTypist X • Elevate Your Speed! • <a href="javascript:void(0);" id="clearHistoryBtn" title="Clear all test history">Clear History</a></p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
