@@ -25,6 +25,7 @@ A simple and interactive Typing Speed Test web application built using HTML, CSS
 
 # 📸 Screenshots
 
+<img width="1468" alt="Screenshot 2025-05-26 at 5 30 07 PM" src="https://github.com/user-attachments/assets/1fa0c9ec-6bc6-4784-ae1c-c888e3ef3b91" />
 
 
 # 📂 Folder Structure
